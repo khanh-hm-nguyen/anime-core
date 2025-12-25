@@ -1,3 +1,5 @@
+"use client"
+
 import { Search, Close } from "@mui/icons-material";
 import { useRef, useEffect } from "react";
 

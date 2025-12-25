@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 
-import Hero from "@/components/Hero";
-import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
+import { Navbar, Footer } from "@/components/layout";
 
 import "./globals.css";
 

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { navigations } from "@/data";
-import SearchBox from "./SearchBox";
+import {SearchBox} from ".";
 import { useState } from "react";
 import useClickOutside from "@/hooks/useClickOutside";
 
@@ -13,11 +13,11 @@ const Navbar = () => {
     setIsSearch(!isSearch);
   };
 
-  const searchRef = useClickOutside(() => {
-    if (isSearch) {
-      setIsSearch(false);
-    }
-  });
+  const searchRef = useClickOutside<HTMLDivElement>(() => {
+  if (isSearch) {
+    setIsSearch(false);
+  }
+});
 
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center">
