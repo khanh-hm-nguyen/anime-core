@@ -1,17 +1,23 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import { navigations } from "@/data";
 import SearchBox from "./SearchBox";
 import { useState } from "react";
+import useClickOutside from "@/hooks/useClickOutside";
 
 const Navbar = () => {
-
-  const [isSearch, setIsSearch] = useState(false)
+  const [isSearch, setIsSearch] = useState(false);
 
   const openSearch = () => {
-    setIsSearch(!isSearch)
-  }
+    setIsSearch(!isSearch);
+  };
+
+  const searchRef = useClickOutside(() => {
+    if (isSearch) {
+      setIsSearch(false);
+    }
+  });
 
   return (
     <div className="fixed top-6 left-0 right-0 z-50 flex justify-center">
@@ -19,7 +25,11 @@ const Navbar = () => {
         {navigations.map((nav) => (
           <div key={nav.id} className="flex items-center">
             {nav.name === "search" ? (
-              <SearchBox openSearch={openSearch} isSearch={isSearch} />
+              <SearchBox
+                openSearch={openSearch}
+                isSearch={isSearch}
+                containerRef={searchRef}
+              />
             ) : (
               <Link
                 href={nav.link}

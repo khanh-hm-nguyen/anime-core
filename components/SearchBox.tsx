@@ -4,9 +4,10 @@ import { useRef, useEffect } from "react";
 interface SearchBoxProps {
   isSearch: boolean;
   openSearch: () => void;
+  containerRef: React.RefObject<HTMLDivElement | null>;
 }
 
-const SearchBox = ({ openSearch, isSearch }: SearchBoxProps) => {
+const SearchBox = ({ openSearch, isSearch, containerRef }: SearchBoxProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -17,6 +18,7 @@ const SearchBox = ({ openSearch, isSearch }: SearchBoxProps) => {
 
   return (
     <div
+    ref={containerRef}
       className={`flex items-center transition-all duration-300 ease-in-out ${
         isSearch ? "bg-white/10 px-2 py-1 rounded-full" : ""
       }`}
